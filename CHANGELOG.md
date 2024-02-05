@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/sunnydsouza/python-starter-template/compare/v1.0.0...v1.1.0) (2024-02-05)
+
+
+### Features
+
+* simulating a feat ([917362d](https://github.com/sunnydsouza/python-starter-template/commit/917362d96dda0bb629606e83eae343326ba034b1))
+
 # 1.0.0 (2024-02-05)
 
 
