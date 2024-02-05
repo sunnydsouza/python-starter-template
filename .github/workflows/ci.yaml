@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # Fetches all history for all branches and tags
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
@@ -18,7 +20,13 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Lint Commit Messages
-      run: npx --no-install commitlint --from=HEAD~1 --to=HEAD --verbose
+      run: |
+        if [ $(git rev-list --count HEAD) -gt 1 ]; then
+          npx --no-install commitlint --from=HEAD~1 --to=HEAD --verbose
+        else
+          npx --no-install commitlint --from=HEAD --to=HEAD --verbose
+        fi
+    
 
   semantic-release:
     needs: lint-commit-messages
